@@ -1,0 +1,13 @@
+{
+  "git": {
+    "commitMessage": "chore: release v${version} --skip-ci"
+  },
+  "github": {
+    "release": true,
+    "autoGenerate": true
+  },
+  "npm": {
+    "publish": true,
+    "skipChecks": true
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "zodfest",
+  "version": "0.0.0",
+  "type": "module",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "bun build.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "latest",
+    "zod": "^3",
+    "zod-to-json-schema": "^3.24.6"
+  },
+  "peerDependencies": {
+    "zod": "^3"
+  },
+  "files": [
+    "dist/",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  }
+}
