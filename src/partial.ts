@@ -23,8 +23,8 @@ export function partial<
   [K in keyof ZodObjectShape<T>]: K extends keyof TExcept
     ? TExcept[K] extends true
       ? ZodObjectShape<T>[K]
-      : z.ZodNullable<ZodObjectShape<T>[K]>
-    : z.ZodNullable<ZodObjectShape<T>[K]>;
+      : z.ZodDefault<z.ZodNullable<ZodObjectShape<T>[K]>>
+    : z.ZodDefault<z.ZodNullable<ZodObjectShape<T>[K]>>;
 }> {
   const shape = schema.shape;
   const newShape: Record<string, any> = {};
@@ -36,7 +36,7 @@ export function partial<
     if (shouldKeepRequired) {
       newShape[key] = field;
     } else {
-      newShape[key] = field.nullable();
+      newShape[key] = field.nullable().default(null);
     }
   }
 
@@ -44,7 +44,7 @@ export function partial<
     [K in keyof ZodObjectShape<T>]: K extends keyof TExcept
       ? TExcept[K] extends true
         ? ZodObjectShape<T>[K]
-        : z.ZodNullable<ZodObjectShape<T>[K]>
-      : z.ZodNullable<ZodObjectShape<T>[K]>;
+        : z.ZodDefault<z.ZodNullable<ZodObjectShape<T>[K]>>
+      : z.ZodDefault<z.ZodNullable<ZodObjectShape<T>[K]>>;
   }>;
 }
